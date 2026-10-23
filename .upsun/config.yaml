@@ -1,4 +1,4 @@
-applications:
+kapplications:
   app:
     type: 'php:8.5'
     relationships:
@@ -8,8 +8,6 @@ applications:
         '/':
           root: 'public'
           passthru: '/index.php'
-    index:
-      - 'index.php'
 
 services:
   db:
