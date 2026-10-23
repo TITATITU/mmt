@@ -1,0 +1,13 @@
+name: app
+type: 'php:8.5'
+relationships:
+  database: 'db:mysql'
+web:
+  locations:
+    '/':
+      root: 'web'
+      passthru: '/index.php'
+mounts:
+  'web/wp-content/uploads':
+    source: local
+    source_path: uploads

@@ -1,0 +1,35 @@
+# Upsun configuration, generated using AI at: 2026-10-23T17:08:44Z
+# AI can make mistakes. Please modify this file to suit your needs.
+applications:
+  app:
+    type: php:8.5
+
+    build:
+      flavor: none
+
+    hooks:
+      build: |
+        set -ex
+        composer install --no-dev --no-interaction --no-progress
+
+    web:
+      locations:
+        /:
+          root: web
+          passthru: /index.php
+
+    mounts:
+      web/uploads:
+        source: storage
+
+    relationships:
+      database: {}
+
+services:
+  database:
+    type: mariadb:12.3
+
+routes:
+  https://{default}/:
+    type: upstream
+    upstream: app:http
