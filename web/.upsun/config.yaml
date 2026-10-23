@@ -1,0 +1,21 @@
+applications:
+  app:
+    type: 'php:8.5'
+    relationships:
+      database: 'db:mysql'
+    web:
+      locations:
+        '/':
+          root: 'public'
+          passthru: '/index.php'
+    index:
+      - 'index.php'
+
+services:
+  db:
+    type: 'mariadb:11.4'
+
+routes:
+  'https://{default}/':
+    type: upstream
+    upstream: 'app:http'
