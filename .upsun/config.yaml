@@ -6,8 +6,10 @@ applications:
     web:
       locations:
         '/':
-          root: 'public'
+          root: 'web'
           passthru: '/index.php'
+          index:
+            - index.php
 
 services:
   db:
